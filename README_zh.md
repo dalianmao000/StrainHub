@@ -26,7 +26,7 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 | 模块 | 状态 | 说明 |
 |:---|:---|:---|
-| QC Agent | 🔄 | 质控报告生成、合规校验工作流 |
+| QC Agent | ✅ | 质控报告生成、合规校验工作流 |
 | Support Agent | 🔄 | 多语言客服、知识库问答 |
 | Maint. Agent | 🔄 | 设备预测性维护、时序数据分析 |
 | Knowledge Agent | 🔄 | 企业知识中枢、学习推荐 |
