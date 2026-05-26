@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  agent-api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - POSTGRES_URL=postgresql://agent:agent@postgres:5432/agent_db
+      - MILVUS_URL=milvus:19530
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - milvus
+      - redis
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: agent_db
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  milvus:
+    image: milvusdb/milvus:latest
+    ports:
+      - "19530:19530"
+    volumes:
+      - milvus_data:/var/lib/milvus
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+  milvus_data:
