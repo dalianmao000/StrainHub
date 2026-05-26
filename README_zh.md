@@ -27,9 +27,9 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 | 模块 | 状态 | 说明 |
 |:---|:---|:---|
 | QC Agent | ✅ | 质控报告生成、合规校验工作流 |
-| Support Agent | 🔄 | 多语言客服、知识库问答 |
-| Maint. Agent | 🔄 | 设备预测性维护、时序数据分析 |
-| Knowledge Agent | 🔄 | 企业知识中枢、学习推荐 |
+| Support Agent | ✅ | 多语言客服、知识库问答 |
+| Maint. Agent | ✅ | 设备预测性维护、时序数据分析 |
+| Knowledge Agent | ✅ | 企业知识中枢、学习推荐 |
 
 ### 待开发 📋
 
@@ -59,7 +59,7 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
         │         │         │         │         │
 ┌───────▼──┐ ┌────▼────┐ ┌───▼────┐ ┌──▼─────┐ ┌──▼──────┐
 │ R&D Agent│ │ QC Agent│ │Support │ │Maint.  │ │Knowledge│
-│   ✅     │ │   🔄    │ │  🔄    │ │  🔄    │ │   🔄    │
+│   ✅     │ │   ✅    │ │   ✅   │ │   ✅   │ │   ✅   │
 └───────┬──┘ └────┬────┘ └───┬────┘ └──┬─────┘ └──┬──────┘
         │         │         │         │         │
 ┌───────▼─────────▼─────────▼─────────▼─────────▼──────────┐
@@ -154,7 +154,11 @@ strainhub-agent/
 │   │   ├── agents/           # Agent 定义
 │   │   │   ├── base.py       # Agent 基类
 │   │   │   ├── intent_router.py
-│   │   │   └── rnd_agent.py
+│   │   │   ├── rnd_agent.py
+│   │   │   ├── qc_agent.py
+│   │   │   ├── support_agent.py
+│   │   │   ├── maint_agent.py
+│   │   │   └── knowledge_agent.py
 │   │   ├── schemas/           # 数据模型
 │   │   │   └── agents.py
 │   │   ├── tools/             # 工具函数
