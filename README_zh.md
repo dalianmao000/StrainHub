@@ -1,6 +1,6 @@
-# StrainHub AI Agent Platform
+# StrainHub AI Agent 平台
 
-基于LangGraph的多Agent协同平台，支持研发辅助、质控合规、客服支持、设备维护、知识中枢5大业务域的AI智能化。
+基于 LangGraph 的多 Agent 协同平台，支持研发辅助、质控合规、客服支持、设备维护、知识中枢五大业务域的 AI 智能化。
 
 ## 许可证
 
@@ -12,15 +12,15 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 | 模块 | 状态 | 描述 |
 |:---|:---|:---|
-| 项目骨架 | ✅ | Docker Compose编排，Python 3.11 + FastAPI |
-| Agent基类 | ✅ | BaseAgent抽象类，统一工作流构建接口 |
+| 项目骨架 | ✅ | Docker Compose 编排，Python 3.11 + FastAPI |
+| Agent 基类 | ✅ | BaseAgent 抽象类，统一工作流构建接口 |
 | 状态定义 | ✅ | RNDState, QCState, SupportState, MaintState, KnowledgeState |
-| Intent Router | ✅ | LLM意图分类 + 关键词fallback |
+| Intent Router | ✅ | LLM 意图分类 + 关键词 fallback |
 | R&D Agent | ✅ | 文献检索、数据分析、配方优化工作流 |
-| 核心工具 | ✅ | 向量检索(rule_engine)、规则引擎、代码解释器 |
-| 顶层编排器 | ✅ | AgentOrchestrator统一调度 |
-| FastAPI入口 | ✅ | /chat, /health, /agents, /metrics接口 |
-| 测试套件 | ✅ | 8个测试文件，覆盖主要模块 |
+| 核心工具 | ✅ | 向量检索、规则引擎、代码解释器 |
+| 顶层编排器 | ✅ | AgentOrchestrator 统一调度 |
+| FastAPI 入口 | ✅ | /chat, /health, /agents, /metrics 接口 |
+| 测试套件 | ✅ | 8 个测试文件，覆盖主要模块 |
 
 ### 开发中 🔄
 
@@ -35,14 +35,14 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 | 模块 | 优先级 | 说明 |
 |:---|:---|:---|
-| PostgreSQL持久化 | P1 | Agent状态、会话管理、审计日志 |
-| Milvus向量库集成 | P1 | RAG检索链、生产级部署 |
-| Redis缓存层 | P1 | 实时数据、热点结果缓存 |
-| 前端界面 | P2 | Vue3多端适配界面 |
-| 低代码组件市场 | P2 | 赋能业务部门快速搭建AI应用 |
+| PostgreSQL 持久化 | P1 | Agent 状态、会话管理、审计日志 |
+| Milvus 向量库集成 | P1 | RAG 检索链、生产级部署 |
+| Redis 缓存层 | P1 | 实时数据、热点结果缓存 |
+| 前端界面 | P2 | Vue3 多端适配界面 |
+| 低代码组件市场 | P2 | 赋能业务部门快速搭建 AI 应用 |
 | 多租户权限体系 | P2 | PostgreSQL RLS、行级安全 |
 | 监控告警 | P2 | Prometheus + Grafana |
-| CI/CD流水线 | P3 | GitLab CI/CD自动化部署 |
+| CI/CD 流水线 | P3 | GitLab CI/CD 自动化部署 |
 
 ## 技术架构
 
@@ -80,9 +80,9 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 - Python 3.11+
 - Docker & Docker Compose
-- OpenAI API Key（或兼容API）
+- OpenAI API Key（或兼容 API）
 
-### 方式一：Docker部署
+### 方式一：Docker 部署
 
 ```bash
 # 克隆项目
@@ -99,7 +99,7 @@ docker-compose up -d
 # 查看日志
 docker-compose logs -f agent-api
 
-# API访问
+# API 访问
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
   -d '{"user_input": "帮我找一下益生菌相关文献"}'
@@ -121,14 +121,14 @@ pip install -r requirements.txt
 uvicorn src.main:app --reload --port 8000
 ```
 
-## API接口
+## API 接口
 
 | 接口 | 方法 | 描述 |
 |:---|:---|:---|
-| `/chat` | POST | 与AI Agent对话 |
+| `/chat` | POST | 与 AI Agent 对话 |
 | `/health` | GET | 健康检查 |
-| `/agents` | GET | 列出所有Agent |
-| `/metrics` | GET | Prometheus指标 |
+| `/agents` | GET | 列出所有 Agent |
+| `/metrics` | GET | Prometheus 指标 |
 | `/sessions/{user_id}` | GET | 获取用户会话历史 |
 | `/session/{session_id}` | GET | 获取特定会话详情 |
 
@@ -151,8 +151,8 @@ pytest backend/tests --cov=src --cov-report=html
 strainhub-agent/
 ├── backend/
 │   ├── src/
-│   │   ├── agents/           # Agent定义
-│   │   │   ├── base.py       # Agent基类
+│   │   ├── agents/           # Agent 定义
+│   │   │   ├── base.py       # Agent 基类
 │   │   │   ├── intent_router.py
 │   │   │   └── rnd_agent.py
 │   │   ├── schemas/           # 数据模型
@@ -164,7 +164,7 @@ strainhub-agent/
 │   │   ├── workflows/          # 工作流编排
 │   │   │   └── orchestrator.py
 │   │   ├── config.py          # 配置管理
-│   │   └── main.py            # FastAPI入口
+│   │   └── main.py            # FastAPI 入口
 │   └── tests/                 # 测试套件
 ├── frontend/                   # 待开发
 ├── docker-compose.yml
@@ -177,9 +177,9 @@ strainhub-agent/
 | 层级 | 技术 |
 |:---|:---|
 | **编排框架** | LangGraph |
-| **API框架** | FastAPI + Uvicorn |
+| **API 框架** | FastAPI + Uvicorn |
 | **数据验证** | Pydantic |
-| **Agent模型** | OpenAI GPT-4o |
+| **Agent 模型** | OpenAI GPT-4o |
 | **向量检索** | Milvus (待集成) |
 | **关系数据库** | PostgreSQL (待集成) |
 | **缓存** | Redis (待集成) |
@@ -193,7 +193,3 @@ strainhub-agent/
 3. 提交更改 (`git commit -m 'feat: Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 创建 Pull Request
-
-## 联系方式
-
-MIT License
