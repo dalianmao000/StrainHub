@@ -4,6 +4,9 @@ from src.schemas.agents import BaseState
 from src.agents.intent_router import IntentRouterAgent
 from src.agents.rnd_agent import RNDAgent
 from src.agents.qc_agent import QCAgent
+from src.agents.support_agent import SupportAgent
+from src.agents.maint_agent import MaintAgent
+from src.agents.knowledge_agent import KnowledgeAgent
 from src.config import get_settings
 
 settings = get_settings()
@@ -21,6 +24,9 @@ class AgentOrchestrator:
         self.agents = {
             "rnd": RNDAgent(),
             "qc": QCAgent(),
+            "support": SupportAgent(),
+            "maint": MaintAgent(),
+            "knowledge": KnowledgeAgent(),
         }
 
     async def route(self, user_input: str, session_id: str) -> str:
