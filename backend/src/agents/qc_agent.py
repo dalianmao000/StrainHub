@@ -1,5 +1,5 @@
 from typing import List, Dict, Optional
-from langgraph import StateGraph, END
+from langgraph.graph import StateGraph, END
 from src.agents.base import BaseAgent
 from src.schemas.agents import QCState
 from src.config import get_settings
@@ -119,10 +119,10 @@ class QCAgent(BaseAgent):
 
     async def _create_audit_log(self, state: QCState) -> QCState:
         """创建审计日志"""
-        from datetime import datetime
+        from datetime import datetime, timezone
 
         audit_log = {
-            "timestamp": datetime.now(datetime.timezone.utc).isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "action": "qc_report_generated",
             "user_id": state.get("user_id", "system"),
             "session_id": state.get("session_id", ""),
