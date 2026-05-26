@@ -21,3 +21,11 @@ def test_validate_compliance_fail():
     result = validate_compliance.invoke({"data": data})
     # Should fail since Unknown Strain not in approved list
     assert "passed" in result
+
+def test_load_compliance_rules():
+    """测试加载合规规则"""
+    from src.tools.rule_engine import load_compliance_rules
+
+    result = load_compliance_rules.invoke({"category": "iso22000"})
+    assert isinstance(result, list)
+    assert len(result) > 0
