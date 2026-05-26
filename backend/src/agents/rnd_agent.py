@@ -44,7 +44,6 @@ class RNDAgent(BaseAgent):
     def define_edges(self, workflow: StateGraph) -> None:
         workflow.add_edge("classify_intent", "embed_query")
         workflow.add_edge("embed_query", "vector_search")
-        workflow.add_node("vector_search", lambda s: s)  # placeholder
         workflow.add_edge("vector_search", "cross_encoder_rerank")
         workflow.add_edge("cross_encoder_rerank", "detect_query_type")
 

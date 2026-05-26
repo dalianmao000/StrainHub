@@ -29,6 +29,7 @@ class RNDState(BaseState):
     confidence: float
     compliance_issues: List[Dict]
     final_output: Optional[Dict]
+    rnd_intent: Optional[str] = None
 
 class QCState(BaseState):
     raw_data: Optional[Dict]
